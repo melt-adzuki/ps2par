@@ -106,6 +106,7 @@ export default defineComponent({
 	methods: {
 		decode() {
 			this.decoded = this.raw("decode", this.encoded)
+			this.convertToPnach()
 		},
 		encode() {
 			this.encoded = this.raw("encode", this.decoded)
