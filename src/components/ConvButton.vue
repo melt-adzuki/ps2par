@@ -3,8 +3,8 @@
 		@click="decode"
 		:class="`conv-button button ${color} is-flex-direction-column`"
 	>
-		<i :class="`fas fa-arrow-${direction} fa-3x`"></i>
-		<span>{{ label }}</span>
+		<i :class="`fas ${icon} fa-3x`"></i>
+		<span><slot></slot></span>
 	</button>
 </template>
 
@@ -14,8 +14,7 @@ import { defineComponent } from "vue"
 export default defineComponent({
 	name: "ConvButton",
 	props: {
-		label: String,
-		direction: String,
+		icon: String,
 		color: String
 	}
 })

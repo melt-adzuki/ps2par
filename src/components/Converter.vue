@@ -14,17 +14,15 @@
 				<div class="conv-container">
 					<conv-button
 						@click="decode"
-						label="複合化"
-						direction="right"
+						icon="fa-arrow-right"
 						color="is-info"
 						class="mb-3"
-					/>
-					<conv-button
-						@click="encode"
-						label="暗号化"
-						direction="left"
-						color="is-danger"
-					/>
+					>
+						複合化
+					</conv-button>
+					<conv-button @click="encode" icon="fa-arrow-left" color="is-danger">
+						暗号化
+					</conv-button>
 				</div>
 			</div>
 			<div class="column">
@@ -40,8 +38,7 @@
 				<div class="conv-container">
 					<conv-button
 						@click="convertToPnach"
-						label="変換"
-						direction="right"
+						icon="fa-arrow-right"
 						color="is-primary"
 					/>
 				</div>
