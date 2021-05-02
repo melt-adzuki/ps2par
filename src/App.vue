@@ -1,7 +1,4 @@
 <template>
-	<!-- <img alt="Vue logo" src="./assets/logo.png" />
-	<HelloWorld msg="Welcome to Your Vue.js + TypeScript App" /> -->
-
 	<section class="hero is-primary">
 		<div class="hero-body">
 			<p class="title">PS2PAR変換</p>
@@ -97,13 +94,11 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
-import HelloWorld from "./components/HelloWorld.vue"
 import ConvButton from "./components/ConvButton.vue"
 
 export default defineComponent({
 	name: "App",
 	components: {
-		HelloWorld,
 		ConvButton
 	},
 	data() {
