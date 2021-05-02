@@ -11,67 +11,69 @@
 		</div>
 	</section>
 
-	<div class="columns">
-		<div class="column">
-			<div class="block">
-				<p class="is-size-2">暗号化</p>
-				<textarea
-					class="textarea"
-					placeholder="10 lines of textarea"
-					rows="15"
-					v-model="encoded"
-				></textarea>
+	<section class="container">
+		<div class="columns">
+			<div class="column">
+				<div class="block">
+					<p class="is-size-2">暗号化</p>
+					<textarea
+						class="textarea"
+						placeholder="10 lines of textarea"
+						rows="15"
+						v-model="encoded"
+					></textarea>
+				</div>
+			</div>
+			<div class="column">
+				<div class="block">
+					<conv-button
+						@click="decode"
+						label="複合化"
+						direction="right"
+						color="is-info"
+					/>
+					<conv-button
+						@click="encode"
+						label="暗号化"
+						direction="left"
+						color="is-danger"
+					/>
+				</div>
+			</div>
+			<div class="column">
+				<div class="block">
+					<p class="is-size-2">複合化</p>
+					<textarea
+						class="textarea"
+						placeholder="10 lines of textarea"
+						rows="15"
+						v-model="decoded"
+					></textarea>
+				</div>
+			</div>
+			<div class="column">
+				<div class="block">
+					<conv-button
+						@click="convertToPnach"
+						label="変換"
+						direction="right"
+						color="is-primary"
+					/>
+				</div>
+			</div>
+			<div class="column">
+				<div class="block">
+					<p class="is-size-2">pnach</p>
+					<textarea
+						class="textarea"
+						placeholder="10 lines of textarea"
+						rows="15"
+						v-model="pnach"
+					></textarea>
+				</div>
 			</div>
 		</div>
-		<div class="column">
-			<div class="block">
-				<button
-					@click="decode"
-					class="button is-primary is-rounded is-fullwidth"
-				>
-					複合化
-				</button>
-				<button
-					@click="encode"
-					class="button is-primary is-rounded is-fullwidth"
-				>
-					暗号化
-				</button>
-			</div>
-		</div>
-		<div class="column">
-			<div class="block">
-				<p class="is-size-2">複合化</p>
-				<textarea
-					class="textarea"
-					placeholder="10 lines of textarea"
-					rows="15"
-					v-model="decoded"
-				></textarea>
-			</div>
-		</div>
-		<div class="column">
-			<div class="block">
-				<button
-					@click="convertToPnach"
-					class="button is-primary is-rounded is-fullwidth"
-				>
-					変換
-				</button>
-			</div>
-		</div>
-		<div class="column">
-			<div class="block">
-				<p class="is-size-2">pnach</p>
-				<textarea
-					class="textarea"
-					placeholder="10 lines of textarea"
-					rows="15"
-					v-model="pnach"
-				></textarea>
-			</div>
-		</div>
-	</div>
+	</section>
 
 	<footer class="footer">
 		<div class="content">
@@ -96,11 +98,13 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import HelloWorld from "./components/HelloWorld.vue"
+import ConvButton from "./components/ConvButton.vue"
 
 export default defineComponent({
 	name: "App",
 	components: {
-		HelloWorld
+		HelloWorld,
+		ConvButton
 	},
 	data() {
 		return {
