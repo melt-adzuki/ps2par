@@ -68,7 +68,10 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import { useToast } from "vue-toastification"
 import ConvButton from "./ConvButton.vue"
+
+const toast = useToast()
 
 export default defineComponent({
 	name: "Converter",
@@ -86,15 +89,19 @@ export default defineComponent({
 		decode() {
 			this.decoded = this.raw("decode", this.encoded)
 			this.convertToPnach()
+			toast.success("複合化しました。")
 		},
 		encode() {
 			this.encoded = this.raw("encode", this.decoded)
+			toast.success("暗号化しました。")
 		},
 		convertToPnach() {
 			this.pnach = this.toPnach(this.decoded)
+			toast.success("pnachコードに変換しました。")
 		},
 		copyPnach() {
 			navigator.clipboard.writeText(this.pnach)
+			toast.success("pnachコードをコピーしました。")
 		},
 		num(input: string, isDt: boolean, mode: "encode" | "decode"): string {
 			const bxor = isDt ? [0xa6, 0x96, 0x01, 0x82] : [0xd9, 0x3b, 0x1b, 0xcc]
