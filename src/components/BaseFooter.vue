@@ -1,6 +1,6 @@
 <template>
 	<footer class="footer">
-		<div class="content">
+		<div class="container">
 			<p class="is-size-3">参考</p>
 			<p>こちらのサイトを参考に作らせていただきました。</p>
 			<ul>
