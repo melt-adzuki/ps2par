@@ -1,12 +1,5 @@
 <template>
-	<header class="hero is-primary">
-		<div class="hero-body">
-			<p class="title">PS2PAR変換</p>
-			<p class="subtitle">
-				PS2PARコードを暗号化・複合化したり、PCSX2で使用できるpnachコードに変換したりできます。
-			</p>
-		</div>
-	</header>
+	<base-header />
 	<section class="section">
 		<converter />
 	</section>
@@ -15,12 +8,14 @@
 
 <script lang="ts">
 import { defineComponent } from "vue"
+import BaseHeader from "./components/BaseHeader.vue"
 import Converter from "./components/Converter.vue"
 import BaseFooter from "./components/BaseFooter.vue"
 
 export default defineComponent({
 	name: "App",
 	components: {
+		BaseHeader,
 		Converter,
 		BaseFooter
 	}
