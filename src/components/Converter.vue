@@ -1,5 +1,5 @@
 <template>
-	<section class="container">
+	<div class="container">
 		<div class="columns">
 			<div class="column">
 				<div class="block">
@@ -61,7 +61,7 @@
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
 </template>
 
 <script lang="ts">
