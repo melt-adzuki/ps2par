@@ -1,24 +1,23 @@
 <template>
 	<div class="container">
-		<div class="columns">
+		<div class="columns is-vcentered">
 			<div class="column">
-				<div class="block">
-					<p class="is-size-2">暗号化</p>
-					<textarea
-						class="textarea"
-						placeholder="10 lines of textarea"
-						rows="15"
-						v-model="encoded"
-					></textarea>
-				</div>
+				<p class="is-size-2">暗号化</p>
+				<textarea
+					class="textarea"
+					placeholder="00000000 00000000"
+					rows="15"
+					v-model="encoded"
+				></textarea>
 			</div>
 			<div class="column">
-				<div class="block">
+				<div class="conv-container">
 					<conv-button
 						@click="decode"
 						label="複合化"
 						direction="right"
 						color="is-info"
+						class="mb-3"
 					/>
 					<conv-button
 						@click="encode"
@@ -29,18 +28,16 @@
 				</div>
 			</div>
 			<div class="column">
-				<div class="block">
-					<p class="is-size-2">複合化</p>
-					<textarea
-						class="textarea"
-						placeholder="10 lines of textarea"
-						rows="15"
-						v-model="decoded"
-					></textarea>
-				</div>
+				<p class="is-size-2">複合化</p>
+				<textarea
+					class="textarea"
+					placeholder="00000000 00000000"
+					rows="15"
+					v-model="decoded"
+				></textarea>
 			</div>
 			<div class="column">
-				<div class="block">
+				<div class="conv-container">
 					<conv-button
 						@click="convertToPnach"
 						label="変換"
@@ -50,15 +47,13 @@
 				</div>
 			</div>
 			<div class="column">
-				<div class="block">
-					<p class="is-size-2">pnach</p>
-					<textarea
-						class="textarea"
-						placeholder="10 lines of textarea"
-						rows="15"
-						v-model="pnach"
-					></textarea>
-				</div>
+				<p class="is-size-2">pnach</p>
+				<textarea
+					class="textarea"
+					placeholder="patch=1,EE,00000000,word,00000000"
+					rows="15"
+					v-model="pnach"
+				></textarea>
 			</div>
 		</div>
 	</div>
@@ -191,3 +186,10 @@ export default defineComponent({
 	}
 })
 </script>
+
+<style lang="scss" scoped>
+.conv-container {
+	width: 128px;
+	margin: auto;
+}
+</style>
