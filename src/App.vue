@@ -1,6 +1,6 @@
 <template>
 	<base-header />
-	<section class="section">
+	<section class="section has-bg-image">
 		<converter />
 	</section>
 	<base-footer />
@@ -21,3 +21,12 @@ export default defineComponent({
 	}
 })
 </script>
+
+<style lang="scss" scoped>
+.has-bg-image {
+	background-image: url(/img/layered-waves-haikei.svg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: bottom;
+}
+</style>

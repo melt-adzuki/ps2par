@@ -1,5 +1,5 @@
 <template>
-	<header class="hero is-primary">
+	<header class="hero">
 		<div class="container">
 			<div class="hero-body">
 				<p class="title">PS2PAR変換</p>
