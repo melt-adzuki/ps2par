@@ -166,8 +166,6 @@ export default defineComponent({
 					binary.match(/^([0-9A-F]{8})[ \t]([0-9A-F]{8})(.*)$/i)
 					result += "patch=1,EE,"
 
-					//let type: "byte" | "short" | "word" | "extended"
-
 					switch (RegExp.$1.charAt(0)) {
 						case "0":
 							result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
