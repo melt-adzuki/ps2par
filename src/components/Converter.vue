@@ -40,7 +40,17 @@
 						@click="convertToPnach"
 						icon="fa-arrow-right"
 						color="is-primary"
-					/>
+						class="mb-3"
+					>
+						変換
+					</conv-button>
+					<conv-button
+						@click="copyPnach"
+						icon="fa-paperclip"
+						color="is-primary"
+					>
+						pnach<br />をコピー
+					</conv-button>
 				</div>
 			</div>
 			<div class="column">
@@ -82,6 +92,9 @@ export default defineComponent({
 		},
 		convertToPnach() {
 			this.pnach = this.toPnach(this.decoded)
+		},
+		copyPnach() {
+			navigator.clipboard.writeText(this.pnach)
 		},
 		num(input: string, isDt: boolean, mode: "encode" | "decode"): string {
 			const bxor = isDt ? [0xa6, 0x96, 0x01, 0x82] : [0xd9, 0x3b, 0x1b, 0xcc]
