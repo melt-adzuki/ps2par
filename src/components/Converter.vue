@@ -5,7 +5,7 @@
 				<p class="is-size-2">暗号化</p>
 				<textarea
 					class="textarea"
-					placeholder="00000000 00000000"
+					placeholder="3C978328 1456E7A5"
 					rows="15"
 					v-model="encoded"
 				></textarea>
@@ -57,7 +57,7 @@
 				<p class="is-size-2">pnach</p>
 				<textarea
 					class="textarea"
-					placeholder="patch=1,EE,00000000,word,00000000"
+					placeholder="patch=1,EE,00000000,byte,00"
 					rows="15"
 					v-model="pnach"
 				></textarea>
