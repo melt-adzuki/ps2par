@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="columns is-vcentered">
 				<div class="column">
-					<p class="is-size-2">暗号化</p>
+					<p class="is-size-3">暗号化</p>
 					<textarea
 						class="textarea"
 						placeholder="3C978328 1456E7A5"
@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<div class="column">
-					<p class="is-size-2">複合化</p>
+					<p class="is-size-3">複合化</p>
 					<textarea
 						class="textarea"
 						placeholder="00000000 00000000"
@@ -55,7 +55,7 @@
 					</div>
 				</div>
 				<div class="column">
-					<p class="is-size-2">pnach</p>
+					<p class="is-size-3">pnach</p>
 					<textarea
 						class="textarea"
 						placeholder="patch=1,EE,00000000,byte,00"
