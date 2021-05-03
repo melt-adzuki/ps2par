@@ -1,7 +1,7 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "da2f916f7c5825e3ac71",
-    "url": "/ps2par/css/app.b8c0343d.css"
+    "revision": "4e08643109a89553b21c",
+    "url": "/ps2par/css/app.e34a5a07.css"
   },
   {
     "revision": "ada11c73a88c7b65d2b3",
@@ -16,12 +16,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/ps2par/img/layered-waves-haikei.c1417b9c.svg"
   },
   {
-    "revision": "da6ac8e62b86f553a1cfb4b0af5b07ad",
+    "revision": "b505e94859488ebed8d683c4ceffe51a",
     "url": "/ps2par/index.html"
   },
   {
-    "revision": "da2f916f7c5825e3ac71",
-    "url": "/ps2par/js/app.544dc6ab.js"
+    "revision": "4e08643109a89553b21c",
+    "url": "/ps2par/js/app.a49ebac0.js"
   },
   {
     "revision": "ada11c73a88c7b65d2b3",
