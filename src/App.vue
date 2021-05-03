@@ -4,8 +4,10 @@
 		<converter class="has-bg-image" />
 		<section class="section has-background-white-bis">
 			<div class="container">
-				<p class="is-size-3">参考</p>
-				<p>こちらのサイトを参考に作らせていただきました。</p>
+				<p class="is-size-3">謝辞</p>
+				<p>
+					恐縮ながらこちらのサイトを参考に制作させていただきました。ありがとうございました。
+				</p>
 				<ul>
 					<li>
 						<a href="https://ps2par-pnach.blogspot.com/"
@@ -14,14 +16,14 @@
 					</li>
 					<li>
 						<a href="http://www.big.or.jp/~dram/ps2code.html"
-							>PS2PARコード変換スクリプト</a
+							>PS2PARコード変換スクリプト - zero memory</a
 						>
 					</li>
 				</ul>
 			</div>
 		</section>
 	</main>
-	<!-- <base-footer /> -->
+	<base-footer />
 </template>
 
 <script lang="ts">
