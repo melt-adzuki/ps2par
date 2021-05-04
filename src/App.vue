@@ -1,10 +1,12 @@
 <template>
 	<base-header />
 	<main>
-		<converter class="has-bg-image" />
-		<section class="section has-background-white-bis">
+		<article class="section has-bg-image">
+			<converter />
+		</article>
+		<aside class="section has-background-white-bis">
 			<div class="container">
-				<p class="is-size-3">謝辞</p>
+				<h2 class="is-size-3">謝辞</h2>
 				<p>
 					恐縮ながらこちらのサイトを参考に制作させていただきました。ありがとうございました。
 				</p>
@@ -21,7 +23,7 @@
 					</li>
 				</ul>
 			</div>
-		</section>
+		</aside>
 	</main>
 	<base-footer />
 </template>

@@ -1,10 +1,8 @@
 <template>
-	<footer class="footer">
-		<small class="content has-text-centered is-size-6">
-			<p>
-				{{ currentYear }} Published by hijiki02 | Source code is available on
-				GitHub
-			</p>
+	<footer class="footer has-text-centered">
+		<small class="is-size-6">
+			{{ currentYear }} Published by hijiki02 | Source code is available on
+			GitHub
 		</small>
 	</footer>
 </template>

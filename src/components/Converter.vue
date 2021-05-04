@@ -1,71 +1,69 @@
 <template>
-	<section class="section">
-		<div class="container">
-			<div class="columns is-vcentered">
-				<div class="column">
-					<p class="is-size-3">暗号化</p>
-					<textarea
-						class="textarea"
-						placeholder="3C978328 1456E7A5"
-						rows="15"
-						v-model="encoded"
-					></textarea>
-				</div>
-				<div class="column">
-					<div class="conv-container">
-						<conv-button
-							@click="decode"
-							icon="fa-arrow-right"
-							color="is-info"
-							class="mb-3"
-						>
-							複合化
-						</conv-button>
-						<conv-button @click="encode" icon="fa-arrow-left" color="is-danger">
-							暗号化
-						</conv-button>
-					</div>
-				</div>
-				<div class="column">
-					<p class="is-size-3">複合化</p>
-					<textarea
-						class="textarea"
-						placeholder="00000000 00000000"
-						rows="15"
-						v-model="decoded"
-					></textarea>
-				</div>
-				<div class="column">
-					<div class="conv-container">
-						<conv-button
-							@click="convertToPnach"
-							icon="fa-arrow-right"
-							color="is-primary"
-							class="mb-3"
-						>
-							変換
-						</conv-button>
-						<conv-button
-							@click="copyPnach"
-							icon="fa-paperclip"
-							color="is-primary"
-						>
-							pnach<br />をコピー
-						</conv-button>
-					</div>
-				</div>
-				<div class="column">
-					<p class="is-size-3">pnach</p>
-					<textarea
-						class="textarea"
-						placeholder="patch=1,EE,00000000,byte,00"
-						rows="15"
-						v-model="pnach"
-					></textarea>
+	<div class="container">
+		<div class="columns is-vcentered">
+			<div class="column">
+				<h3 class="is-size-3">暗号化</h3>
+				<textarea
+					class="textarea"
+					placeholder="3C978328 1456E7A5"
+					rows="15"
+					v-model="encoded"
+				></textarea>
+			</div>
+			<div class="column">
+				<div class="conv-container">
+					<conv-button
+						@click="decode"
+						icon="fa-arrow-right"
+						color="is-info"
+						class="mb-3"
+					>
+						複合化
+					</conv-button>
+					<conv-button @click="encode" icon="fa-arrow-left" color="is-danger">
+						暗号化
+					</conv-button>
 				</div>
 			</div>
+			<div class="column">
+				<h3 class="is-size-3">複合化</h3>
+				<textarea
+					class="textarea"
+					placeholder="00000000 00000000"
+					rows="15"
+					v-model="decoded"
+				></textarea>
+			</div>
+			<div class="column">
+				<div class="conv-container">
+					<conv-button
+						@click="convertToPnach"
+						icon="fa-arrow-right"
+						color="is-primary"
+						class="mb-3"
+					>
+						変換
+					</conv-button>
+					<conv-button
+						@click="copyPnach"
+						icon="fa-paperclip"
+						color="is-primary"
+					>
+						pnach<br />をコピー
+					</conv-button>
+				</div>
+			</div>
+			<div class="column">
+				<h3 class="is-size-3">pnach</h3>
+				<textarea
+					class="textarea"
+					placeholder="patch=1,EE,00000000,byte,00"
+					rows="15"
+					v-model="pnach"
+				></textarea>
+			</div>
 		</div>
-	</section>
+	</div>
 </template>
 
 <script lang="ts">
