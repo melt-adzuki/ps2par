@@ -185,7 +185,13 @@ export default defineComponent({
 								8
 							)}`
 							break
-						case "2" || "A" || "F":
+						case "2":
+							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+							break
+						case "A":
+							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+							break
+						case "F":
 							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
 							break
 						default:
