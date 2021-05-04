@@ -5,24 +5,7 @@
 			<converter />
 		</article>
 		<aside class="section has-background-white-bis">
-			<div class="container">
-				<h2 class="is-size-3">謝辞</h2>
-				<p>
-					恐縮ながらこちらのサイトを参考に制作させていただきました。ありがとうございました。
-				</p>
-				<ul>
-					<li>
-						<a href="https://ps2par-pnach.blogspot.com/"
-							>PS2PARコード→pnach用コード変換スクリプト</a
-						>
-					</li>
-					<li>
-						<a href="http://www.big.or.jp/~dram/ps2code.html"
-							>PS2PARコード変換スクリプト - zero memory</a
-						>
-					</li>
-				</ul>
-			</div>
+			<acknowledgements />
 		</aside>
 	</main>
 	<base-footer />
@@ -32,6 +15,7 @@
 import { defineComponent } from "vue"
 import BaseHeader from "./components/BaseHeader.vue"
 import Converter from "./components/Converter.vue"
+import Acknowledgements from "./components/Acknowledgements.vue"
 import BaseFooter from "./components/BaseFooter.vue"
 
 export default defineComponent({
@@ -39,6 +23,7 @@ export default defineComponent({
 	components: {
 		BaseHeader,
 		Converter,
+		Acknowledgements,
 		BaseFooter
 	}
 })
