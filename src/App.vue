@@ -1,7 +1,7 @@
 <template>
 	<base-header />
 	<main>
-		<article class="section has-bg-image">
+		<article class="section has-background-image">
 			<converter />
 		</article>
 		<aside class="section has-background-white-bis">
@@ -30,7 +30,7 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.has-bg-image {
+.has-background-image {
 	background-image: url(~@/assets/layered-waves-haikei.svg);
 	background-repeat: no-repeat;
 	background-size: cover;
