@@ -1,6 +1,6 @@
 <template>
 	<div class="container content">
-		<h2 class="is-size-3">謝辞</h2>
+		<h2>謝辞</h2>
 		<p>
 			恐縮ながらこちらのサイトを参考に制作させていただきました。ありがとうございました。
 		</p>
