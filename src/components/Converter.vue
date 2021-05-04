@@ -136,26 +136,30 @@ export default defineComponent({
 			let result: string = ""
 
 			input.split("\n").forEach(binary => {
-				if (binary.match(/^([0-9A-F]{8})[ \t]([0-9A-F]{8})(.*)$/i)) {
-					result += `${this.num(RegExp.$1, true, mode)} ${this.num(
-						RegExp.$2,
-						false,
-						mode
-					)}`.toUpperCase()
+				binary = binary.trim()
 
-					if (RegExp.$3 != "") {
-						const comment = RegExp.$3
+				if (!(binary === "")) {
+					if (binary.match(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i)) {
+						result += `${this.num(RegExp.$1, true, mode)} ${this.num(
+							RegExp.$2,
+							false,
+							mode
+						)}`.toUpperCase()
 
-						if (comment.match(/^\s*\/\/.*$/)) {
-							result += comment
-						} else {
-							comment.match(/(\s*)([^\s].*)$/)
-							result += `${RegExp.$1}//${RegExp.$2}`
+						if (RegExp.$3 != "") {
+							const comment = RegExp.$3
+
+							if (comment.match(/^\s*\/\/.*$/)) {
+								result += comment
+							} else {
+								comment.match(/(\s*)([^\s].*)$/)
+								result += `${RegExp.$1}//${RegExp.$2}`
+							}
 						}
+					} else {
+						if (!binary.match(/^\s*\/\/.*$/)) result += "//"
+						result += binary
 					}
-				} else {
-					if (!binary.match(/^\s*\/\/.*$/)) result += "//"
-					result += binary
 				}
 
 				result += "\n"
@@ -167,36 +171,39 @@ export default defineComponent({
 			let result: string = ""
 
 			input.split("\n").forEach(binary => {
-				if (binary.match(/^\/\/.*$/)) {
-					result += binary
-				} else {
-					binary.match(/^([0-9A-F]{8})[ \t]([0-9A-F]{8})(.*)$/i)
-					result += "patch=1,EE,"
+				binary = binary.trim()
 
-					switch (RegExp.$1.charAt(0)) {
-						case "0":
-							result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
-							break
-						case "1":
-							result += `${RegExp.$1.substring(1)},short,${RegExp.$2.substring(
-								4,
-								8
-							)}`
-							break
-						case "2":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						case "A":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						case "F":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						default:
-							result += `${RegExp.$1},extended,${RegExp.$2}`
+				if (!(binary === "")) {
+					if (binary.match(/^\/\/.*$/)) {
+						result += binary
+					} else {
+						binary.match(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i)
+						result += "patch=1,EE,"
+
+						switch (RegExp.$1.charAt(0)) {
+							case "0":
+								result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
+								break
+							case "1":
+								result += `${RegExp.$1.substring(
+									1
+								)},short,${RegExp.$2.substring(4, 8)}`
+								break
+							case "2":
+								result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+								break
+							case "A":
+								result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+								break
+							case "F":
+								result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+								break
+							default:
+								result += `${RegExp.$1},extended,${RegExp.$2}`
+						}
+
+						result += RegExp.$3
 					}
-
-					result += RegExp.$3
 				}
 
 				result += "\n"
