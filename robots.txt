@@ -1,2 +1,2 @@
 User-agent: *
-Disallow:
+Sitemap: https://hijiki02.github.io/ps2par/sitemap.xml
