@@ -1,6 +1,5 @@
 import { createApp } from "vue"
 import App from "./App.vue"
-import "./registerServiceWorker"
 import VueToastification, { TYPE } from "vue-toastification"
 import "vue-toastification/dist/index.css"
 
