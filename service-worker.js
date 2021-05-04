@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/ps2par/precache-manifest.ed10c1ee51052abd49d24af88af99c49.js"
+  "/ps2par/precache-manifest.198de9111952a80fedc66567e4eeff2e.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "ps2par"});
