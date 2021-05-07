@@ -234,20 +234,21 @@ export default defineComponent({
 						result += binary
 					} else {
 						binary.match(
-							/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{8})(.*)$/i
+							/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{2,8})(.*)$/i
 						)
+
+						const cutAddress =
+							RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : ""
 
 						switch (RegExp.$3) {
 							case "byte":
-								result += `0${RegExp.$2} 000000${RegExp.$4}`
+								result += `0${cutAddress} 000000${RegExp.$4}`
 								break
 							case "short":
-								result += `1${RegExp.$2} 0000${RegExp.$4}`
+								result += `1${cutAddress} 0000${RegExp.$4}`
 								break
 							case "word":
-								if (RegExp.$2.length === 8)
-									result += `2${RegExp.$2.substring(1, 8)} ${RegExp.$4}`
-								else result += `2${RegExp.$2} ${RegExp.$4}`
+								result += `2${cutAddress} ${RegExp.$4}`
 								break
 							case "extended":
 								result += `${RegExp.$2} ${RegExp.$4}`
