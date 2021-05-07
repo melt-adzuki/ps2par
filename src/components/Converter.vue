@@ -235,7 +235,7 @@ export default defineComponent({
 					} else {
 						binary.match(
 							/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{8})(.*)$/i
-						) ?? ""
+						)
 
 						switch (RegExp.$3) {
 							case "byte":
@@ -245,7 +245,9 @@ export default defineComponent({
 								result += `1${RegExp.$2} 0000${RegExp.$4}`
 								break
 							case "word":
-								result += `2${RegExp.$2} ${RegExp.$4}`
+								if (RegExp.$2.length === 8)
+									result += `2${RegExp.$2.substring(1, 8)} ${RegExp.$4}`
+								else result += `2${RegExp.$2} ${RegExp.$4}`
 								break
 							case "extended":
 								result += `${RegExp.$2} ${RegExp.$4}`
