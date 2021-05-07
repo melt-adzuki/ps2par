@@ -6,7 +6,7 @@
 				<textarea
 					class="textarea"
 					placeholder="3C978328 1456E7A5"
-					rows="15"
+					rows="20"
 					v-model="encoded"
 				></textarea>
 			</div>
@@ -30,7 +30,7 @@
 				<textarea
 					class="textarea"
 					placeholder="00000000 00000000"
-					rows="15"
+					rows="20"
 					v-model="decoded"
 				></textarea>
 			</div>
@@ -43,6 +43,14 @@
 						class="mb-3"
 					>
 						変換
+					</conv-button>
+					<conv-button
+						@click="deconvertFromPnach"
+						icon="fa-arrow-left"
+						color="is-primary"
+						class="mb-3"
+					>
+						逆変換
 					</conv-button>
 					<conv-button
 						@click="copyPnach"
@@ -58,7 +66,7 @@
 				<textarea
 					class="textarea"
 					placeholder="patch=1,EE,00000000,byte,00"
-					rows="15"
+					rows="20"
 					v-model="pnach"
 				></textarea>
 			</div>
@@ -98,6 +106,10 @@ export default defineComponent({
 		convertToPnach() {
 			this.pnach = this.toPnach(this.decoded)
 			toast.success("pnachコードに変換しました。")
+		},
+		deconvertFromPnach() {
+			this.decoded = this.fromPnach(this.pnach)
+			toast.success("pnachコードから復元しました。")
 		},
 		copyPnach() {
 			navigator.clipboard.writeText(this.pnach)
@@ -203,6 +215,44 @@ export default defineComponent({
 						}
 
 						result += RegExp.$3
+					}
+				}
+
+				result += "\n"
+			})
+
+			return result.trim()
+		},
+		fromPnach(input: string): string {
+			let result: string = ""
+
+			input.split("\n").forEach(binary => {
+				binary = binary.trim()
+
+				if (!(binary === "")) {
+					if (binary.match(/^\/\/.*$/)) {
+						result += binary
+					} else {
+						binary.match(
+							/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{8})(.*)$/i
+						) ?? ""
+
+						switch (RegExp.$3) {
+							case "byte":
+								result += `0${RegExp.$2} 000000${RegExp.$4}`
+								break
+							case "short":
+								result += `1${RegExp.$2} 0000${RegExp.$4}`
+								break
+							case "word":
+								result += `2${RegExp.$2} ${RegExp.$4}`
+								break
+							case "extended":
+								result += `${RegExp.$2} ${RegExp.$4}`
+								break
+						}
+
+						result += RegExp.$5
 					}
 				}
 
