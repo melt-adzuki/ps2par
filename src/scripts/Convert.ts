@@ -68,7 +68,7 @@ export const Convert = {
 
 		return result.trim()
 	},
-	toPnach(input: string): string {
+	pnach(mode: "convert" | "deconvert", input: string): string {
 		let result: string = ""
 
 		input.split("\n").forEach(binary => {
@@ -78,74 +78,60 @@ export const Convert = {
 				if (binary.match(/^\/\/.*$/)) {
 					result += binary
 				} else {
-					binary.match(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i)
-					result += "patch=1,EE,"
+					switch (mode) {
+						case "convert":
+							binary.match(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i)
+							result += "patch=1,EE,"
 
-					switch (RegExp.$1.charAt(0)) {
-						case "0":
-							result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
-							break
-						case "1":
-							result += `${RegExp.$1.substring(1)},short,${RegExp.$2.substring(
-								4,
-								8
-							)}`
-							break
-						case "2":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						case "A":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						case "F":
-							result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-							break
-						default:
-							result += `${RegExp.$1},extended,${RegExp.$2}`
+							switch (RegExp.$1.charAt(0)) {
+								case "0":
+									result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
+									break
+								case "1":
+									result += `${RegExp.$1.substring(
+										1
+									)},short,${RegExp.$2.substring(4, 8)}`
+									break
+								case "2":
+									result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+									break
+								case "A":
+									result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+									break
+								case "F":
+									result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+									break
+								default:
+									result += `${RegExp.$1},extended,${RegExp.$2}`
+							}
+
+							result += RegExp.$3
+
+						case "deconvert":
+							binary.match(
+								/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{2,8})(.*)$/i
+							)
+
+							const cutAddress =
+								RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : RegExp.$2
+
+							switch (RegExp.$3) {
+								case "byte":
+									result += `0${cutAddress} 000000${RegExp.$4}`
+									break
+								case "short":
+									result += `1${cutAddress} 0000${RegExp.$4}`
+									break
+								case "word":
+									result += `2${cutAddress} ${RegExp.$4}`
+									break
+								case "extended":
+									result += `${RegExp.$2} ${RegExp.$4}`
+									break
+							}
+
+							result += RegExp.$5
 					}
-
-					result += RegExp.$3
-				}
-			}
-
-			result += "\n"
-		})
-
-		return result.trim()
-	},
-	fromPnach(input: string): string {
-		let result: string = ""
-
-		input.split("\n").forEach(binary => {
-			binary = binary.trim()
-
-			if (!(binary === "")) {
-				if (binary.match(/^\/\/.*$/)) {
-					result += binary
-				} else {
-					binary.match(
-						/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{2,8})(.*)$/i
-					)
-
-					const cutAddress =
-						RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : RegExp.$2
-
-					switch (RegExp.$3) {
-						case "byte":
-							result += `0${cutAddress} 000000${RegExp.$4}`
-							break
-						case "short":
-							result += `1${cutAddress} 0000${RegExp.$4}`
-							break
-						case "word":
-							result += `2${cutAddress} ${RegExp.$4}`
-							break
-						case "extended":
-							result += `${RegExp.$2} ${RegExp.$4}`
-							break
-					}
-
-					result += RegExp.$5
 				}
 			}
 

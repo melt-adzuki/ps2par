@@ -105,11 +105,11 @@ export default defineComponent({
 			toast.success("暗号化しました。")
 		},
 		convertToPnach() {
-			this.pnach = Convert.toPnach(this.decoded)
+			this.pnach = Convert.pnach("convert", this.decoded)
 			toast.success("pnachコードに変換しました。")
 		},
 		deconvertFromPnach() {
-			this.decoded = Convert.fromPnach(this.pnach)
+			this.decoded = Convert.pnach("deconvert", this.pnach)
 			toast.success("pnachコードから復元しました。")
 		},
 		copyPnach() {
