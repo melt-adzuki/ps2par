@@ -75,7 +75,10 @@ export const Convert = {
 			binary = binary.trim()
 
 			if (!(binary === "")) {
-				if (binary.match(/^\/\/.*$/)) {
+				if (binary.match(/^([89BF])/i)) {
+					if (!binary.match(/^\s*\/\/.*$/)) result += "//"
+					result += binary
+				} else if (binary.match(/^\/\/.*$/)) {
 					result += binary
 				} else {
 					switch (mode) {
