@@ -251,7 +251,7 @@ export default defineComponent({
 								result += `2${cutAddress} ${RegExp.$4}`
 								break
 							case "extended":
-								result += `${cutAddress} ${RegExp.$4}`
+								result += `${RegExp.$2} ${RegExp.$4}`
 								break
 						}
 
