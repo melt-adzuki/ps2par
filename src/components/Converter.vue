@@ -238,7 +238,7 @@ export default defineComponent({
 						)
 
 						const cutAddress =
-							RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : ""
+							RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : RegExp.$2
 
 						switch (RegExp.$3) {
 							case "byte":
@@ -251,7 +251,7 @@ export default defineComponent({
 								result += `2${cutAddress} ${RegExp.$4}`
 								break
 							case "extended":
-								result += `${RegExp.$2} ${RegExp.$4}`
+								result += `${cutAddress} ${RegExp.$4}`
 								break
 						}
 
