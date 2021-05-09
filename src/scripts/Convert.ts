@@ -75,7 +75,7 @@ export const Convert = {
 			binary = binary.trim()
 
 			if (!(binary === "")) {
-				if (binary.match(/^\/\/.*$/) || "\n") {
+				if (binary.match(/^\/\/.*$/)) {
 					result += binary
 				} else if (binary.match(/^([89BF])/i)) {
 					result += `//${binary}`
@@ -106,6 +106,13 @@ export const Convert = {
 									default:
 										result += `${RegExp.$1},extended,${RegExp.$2}`
 										break
+								}
+
+								if (RegExp.$3 != "") {
+									const comment = RegExp.$3
+
+									comment.match(/(\s*)([^\s].*)$/)
+									result += `${RegExp.$1}//${RegExp.$2}`
 								}
 							} else {
 								result += `//${binary}`
