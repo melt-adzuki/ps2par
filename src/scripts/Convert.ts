@@ -111,8 +111,12 @@ export const Convert = {
 								if (RegExp.$3 != "") {
 									const comment = RegExp.$3
 
-									comment.match(/(\s*)([^\s].*)$/)
-									result += `${RegExp.$1}//${RegExp.$2}`
+									if (comment.match(/^\s*\/\/.*$/)) {
+										result += comment
+									} else {
+										comment.match(/(\s*)([^\s].*)$/)
+										result += `${RegExp.$1}//${RegExp.$2}`
+									}
 								}
 							} else {
 								result += `//${binary}`
@@ -148,8 +152,12 @@ export const Convert = {
 								if (RegExp.$5 != "") {
 									const comment = RegExp.$5
 
-									comment.match(/(\s*)([^\s].*)$/)
-									result += `${RegExp.$1}//${RegExp.$2}`
+									if (comment.match(/^\s*\/\/.*$/)) {
+										result += comment
+									} else {
+										comment.match(/(\s*)([^\s].*)$/)
+										result += `${RegExp.$1}//${RegExp.$2}`
+									}
 								}
 							} else {
 								result += `//${binary}`
