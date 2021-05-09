@@ -105,12 +105,14 @@ export const Convert = {
 										break
 									default:
 										result += `${RegExp.$1},extended,${RegExp.$2}`
+										break
 								}
 							} else {
 								result += `//${binary}`
 							}
 
 							result += RegExp.$3
+							break
 
 						case "deconvert":
 							if (
@@ -145,6 +147,7 @@ export const Convert = {
 							} else {
 								result += `//${binary}`
 							}
+							break
 					}
 				}
 			}
