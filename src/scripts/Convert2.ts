@@ -18,7 +18,7 @@ class Code {
 				// 正しいコードである場合
 				if (line.match(this.match)) {
 					// 処理を実行する
-					this.func(line)
+					this.func()
 
 					// コードの後にコメントがある場合
 					if (!(RegExp.$3 === "")) {
@@ -84,27 +84,21 @@ const num = (
 	return result
 }
 
-const decode = new Code(
-	/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i,
-	(line: string) => {
-		decode.result += `${num(RegExp.$1, "address", "decode")} ${num(
-			RegExp.$2,
-			"data",
-			"decode"
-		)}`.toUpperCase()
-	}
-)
+const decode = new Code(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, () => {
+	decode.result += `${num(RegExp.$1, "address", "decode")} ${num(
+		RegExp.$2,
+		"data",
+		"decode"
+	)}`.toUpperCase()
+})
 
-const encode = new Code(
-	/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i,
-	(line: string) => {
-		encode.result += `${num(RegExp.$1, "address", "encode")} ${num(
-			RegExp.$2,
-			"data",
-			"encode"
-		)}`.toUpperCase()
-	}
-)
+const encode = new Code(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, () => {
+	encode.result += `${num(RegExp.$1, "address", "encode")} ${num(
+		RegExp.$2,
+		"data",
+		"encode"
+	)}`.toUpperCase()
+})
 
 export const Convert = {
 	decode(input: string): string {
