@@ -1,14 +1,18 @@
 class Code {
 	match: RegExp
 	func: Function
+	commentOrder: number
 	result: string = ""
 
-	constructor(match: RegExp, func: Function) {
+	constructor(match: RegExp, func: Function, commentOrder: number = 3) {
 		this.match = match
 		this.func = func
+		this.commentOrder = commentOrder
 	}
 
 	do(input: string): string {
+		this.result = ""
+
 		input.split("\n").forEach(line => {
 			// 毎行ごとに前後空白を処理する
 			line = line.trim()
@@ -20,10 +24,18 @@ class Code {
 					// 処理を実行する
 					this.func()
 
-					// コードの後にコメントがある場合
-					if (!(RegExp.$3 === "")) {
-						const comment = RegExp.$3
+					let comment: string = ""
 
+					switch (this.commentOrder) {
+						case 3:
+							comment = RegExp.$3
+							break
+						case 5:
+							comment = RegExp.$5
+					}
+
+					// コードの後にコメントがある場合
+					if (!(comment === "")) {
 						// すでにコメントアウトされている場合
 						if (comment.match(/^\s*\/\/.*$/)) {
 							// そのまま出力
@@ -33,6 +45,7 @@ class Code {
 							this.result += `${RegExp.$1}//${RegExp.$2}`
 						}
 					}
+
 					// コードではない場合
 				} else {
 					// すでにコメントアウトしていなければ行う
@@ -100,11 +113,69 @@ const encode = new Code(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, () => {
 	)}`.toUpperCase()
 })
 
+const toPnach = new Code(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, () => {
+	toPnach.result += "patch=1,EE,"
+
+	switch (RegExp.$1.charAt(0)) {
+		case "0":
+			toPnach.result += `${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`
+			break
+		case "1":
+			toPnach.result += `${RegExp.$1.substring(1)},short,${RegExp.$2.substring(
+				4,
+				8
+			)}`
+			break
+		case "2":
+			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+			break
+		case "A":
+			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+			break
+		case "F":
+			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
+			break
+		default:
+			toPnach.result += `${RegExp.$1},extended,${RegExp.$2}`
+			break
+	}
+})
+
+const fromPnach = new Code(
+	/^(\bpatch=[01],EE,\b)([0-9A-F]{7,8}),(\bbyte|short|word|extended\b),([0-9A-F]{2,8})(.*)$/i,
+	() => {
+		const cutAddress =
+			RegExp.$2.length === 8 ? RegExp.$2.substring(1, 8) : RegExp.$2
+
+		switch (RegExp.$3) {
+			case "byte":
+				fromPnach.result += `0${cutAddress} 000000${RegExp.$4}`
+				break
+			case "short":
+				fromPnach.result += `1${cutAddress} 0000${RegExp.$4}`
+				break
+			case "word":
+				fromPnach.result += `2${cutAddress} ${RegExp.$4}`
+				break
+			case "extended":
+				fromPnach.result += `${RegExp.$2} ${RegExp.$4}`
+				break
+		}
+	},
+	5
+)
+
 export const Convert = {
 	decode(input: string): string {
 		return decode.do(input)
 	},
 	encode(input: string): string {
 		return encode.do(input)
+	},
+	toPnach(input: string): string {
+		return toPnach.do(input)
+	},
+	fromPnach(input: string): string {
+		return fromPnach.do(input)
 	}
 }
