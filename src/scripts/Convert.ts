@@ -32,6 +32,7 @@ class Code {
 							break
 						case 5:
 							comment = RegExp.$5
+							break
 					}
 
 					// コードの後にコメントがある場合
