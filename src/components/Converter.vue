@@ -96,20 +96,20 @@ export default defineComponent({
 	},
 	methods: {
 		decode() {
-			this.decoded = Convert.raw("decode", this.encoded)
+			this.decoded = Convert.decode(this.encoded)
 			this.convertToPnach()
 			toast.success("複合化しました。")
 		},
 		encode() {
-			this.encoded = Convert.raw("encode", this.decoded)
+			this.encoded = Convert.encode(this.decoded)
 			toast.success("暗号化しました。")
 		},
 		convertToPnach() {
-			this.pnach = Convert.pnach("convert", this.decoded)
+			this.pnach = Convert.toPnach(this.decoded)
 			toast.success("pnachコードに変換しました。")
 		},
 		deconvertFromPnach() {
-			this.decoded = Convert.pnach("deconvert", this.pnach)
+			this.decoded = Convert.fromPnach(this.pnach)
 			toast.success("pnachコードから復元しました。")
 		},
 		copyPnach() {
