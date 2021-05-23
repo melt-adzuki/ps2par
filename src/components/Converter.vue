@@ -8,16 +8,11 @@
 					v-model="encoded"
 				/>
 			</div>
-			<div class="col">
-				<conv-button
-					@click="decode"
-					icon="fa-arrow-right"
-					color="is-info"
-					class="mb-3"
-				>
+			<div class="col-lg-2 col-12 d-flex flex-column justify-content-center">
+				<conv-button @click="decode" icon="fa-arrow-right" color="blue">
 					複合化
 				</conv-button>
-				<conv-button @click="encode" icon="fa-arrow-left" color="is-danger">
+				<conv-button @click="encode" icon="fa-arrow-left" color="red">
 					暗号化
 				</conv-button>
 			</div>
@@ -28,24 +23,22 @@
 					v-model="decoded"
 				/>
 			</div>
-			<div class="col">
+			<div class="col-lg-2 col-12 d-flex flex-column justify-content-center">
 				<conv-button
 					@click="convertToPnach"
 					icon="fa-arrow-right"
-					color="is-primary"
-					class="mb-3"
+					color="green"
 				>
 					変換
 				</conv-button>
 				<conv-button
 					@click="deconvertFromPnach"
 					icon="fa-arrow-left"
-					color="is-primary"
-					class="mb-3"
+					color="green"
 				>
 					逆変換
 				</conv-button>
-				<conv-button @click="copyPnach" icon="fa-paperclip" color="is-primary">
+				<conv-button @click="copyPnach" icon="fa-paperclip">
 					pnach<br />をコピー
 				</conv-button>
 			</div>

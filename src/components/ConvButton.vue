@@ -1,9 +1,11 @@
 <template>
 	<button
 		@click="decode"
-		:class="`conv-button button ${color} is-flex-direction-column`"
+		:class="
+			`conv-button btn has-shadow w-100 d-flex justify-content-between align-items-center my-3 ${color}`
+		"
 	>
-		<i :class="`fas ${icon} fa-3x`"></i>
+		<i :class="`fas ${icon} fa-2x`"></i>
 		<span><slot></slot></span>
 	</button>
 </template>
@@ -22,7 +24,15 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .conv-button {
-	width: 128px;
-	height: 128px;
+	padding: 12px 24px;
+	border-radius: 0px;
+	background-color: #ffffff;
+	color: var(--main-color);
+	border-bottom: 8px solid var(--main-color);
+
+	&:hover {
+		background-color: var(--main-color);
+		color: #ffffff;
+	}
 }
 </style>
