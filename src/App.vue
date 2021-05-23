@@ -33,6 +33,6 @@ export default defineComponent({
 .has-background-image {
 	background-image: url("~@/assets/circle-scatter-haikei.svg");
 	background-repeat: no-repeat;
-	background-position: bottom;
+	background-position: center;
 }
 </style>
