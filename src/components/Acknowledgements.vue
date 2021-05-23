@@ -1,5 +1,5 @@
 <template>
-	<div class="container content">
+	<div class="container">
 		<h2>謝辞</h2>
 		<p>
 			恐縮ながらこちらのサイトを参考に制作させていただきました。ありがとうございました。

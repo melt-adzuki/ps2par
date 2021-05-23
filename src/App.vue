@@ -1,10 +1,10 @@
 <template>
-	<base-header />
+	<base-header class="py-5" />
 	<main>
-		<article class="section has-background-image">
+		<article class="py-5 has-background-image">
 			<converter />
 		</article>
-		<aside class="section has-background-white-bis">
+		<aside class="py-5">
 			<acknowledgements />
 		</aside>
 	</main>

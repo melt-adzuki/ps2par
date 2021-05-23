@@ -1,6 +1,6 @@
 <template>
-	<footer class="footer has-text-centered">
-		<small class="is-size-6">
+	<footer class="py-3 bg-dark">
+		<small class="d-block h6 m-0 text-center text-white">
 			{{ currentYear }} Published by hijiki02 | Source code is available on
 			GitHub
 		</small>
