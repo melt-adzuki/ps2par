@@ -1,9 +1,11 @@
 import { createApp } from "vue"
 import App from "./App.vue"
+import "./main.scss"
 import VueToastification, { TYPE } from "vue-toastification"
 import "vue-toastification/dist/index.css"
 
 const app = createApp(App)
+
 app.use(VueToastification, {
 	toastDefaults: {
 		[TYPE.SUCCESS]: {
@@ -25,4 +27,5 @@ app.use(VueToastification, {
 	maxToasts: 2,
 	newestOnTop: true
 })
+
 app.mount("#app")
