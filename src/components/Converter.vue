@@ -1,5 +1,5 @@
 <template>
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row row-align-items-start">
 			<div class="col">
 				<conv-input

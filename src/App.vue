@@ -1,7 +1,7 @@
 <template>
 	<base-header class="py-5" />
 	<main>
-		<article class="has-background-image py-5">
+		<article class="has-background-image px-5 py-5">
 			<converter />
 		</article>
 		<aside class="py-5">
