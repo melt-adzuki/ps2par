@@ -24,9 +24,3 @@ export default defineComponent({
 	}
 })
 </script>
-
-<style lang="scss" scoped>
-.footer {
-	padding: 1.5rem;
-}
-</style>

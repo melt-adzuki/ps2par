@@ -1,6 +1,5 @@
 <template>
 	<button
-		@click="decode"
 		:class="
 			`conv-button btn has-shadow w-100 d-flex justify-content-between align-items-center my-3 ${color}`
 		"
