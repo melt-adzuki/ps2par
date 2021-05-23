@@ -1,7 +1,7 @@
 <template>
 	<base-header class="py-5" />
 	<main>
-		<article class="py-5 has-background-image">
+		<article class="has-background-image py-5">
 			<converter />
 		</article>
 		<aside class="py-5">
@@ -31,9 +31,8 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .has-background-image {
-	background-image: url(~@/assets/layered-waves-haikei.svg);
+	background-image: url("~@/assets/circle-scatter-haikei.svg");
 	background-repeat: no-repeat;
-	background-size: cover;
 	background-position: bottom;
 }
 </style>
