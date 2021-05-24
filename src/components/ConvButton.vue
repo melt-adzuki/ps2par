@@ -5,7 +5,7 @@
 		"
 	>
 		<i :class="`fas ${icon} fa-2x`"></i>
-		<span><slot></slot></span>
+		<span class="ml-4"><slot></slot></span>
 	</button>
 </template>
 
@@ -23,6 +23,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .conv-button {
+	text-align: right;
 	padding: 12px 24px;
 	border-radius: 0px;
 	background-color: #ffffff;

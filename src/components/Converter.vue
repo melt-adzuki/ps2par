@@ -8,7 +8,7 @@
 					v-model="encoded"
 				/>
 			</div>
-			<div class="col-lg-2 col-12 d-flex flex-column justify-content-center">
+			<div class="col-xl-2 col-12 d-flex flex-column justify-content-center">
 				<conv-button @click="decode" icon="fa-arrow-right" color="blue">
 					複合化
 				</conv-button>
@@ -23,7 +23,7 @@
 					v-model="decoded"
 				/>
 			</div>
-			<div class="col-lg-2 col-12 d-flex flex-column justify-content-center">
+			<div class="col-xl-2 col-12 d-flex flex-column justify-content-center">
 				<conv-button
 					@click="convertToPnach"
 					icon="fa-arrow-right"
@@ -39,7 +39,7 @@
 					逆変換
 				</conv-button>
 				<conv-button @click="copyPnach" icon="fa-paperclip">
-					pnach<br />をコピー
+					pnachをコピー
 				</conv-button>
 			</div>
 			<div class="col">
