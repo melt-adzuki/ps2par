@@ -1,6 +1,6 @@
 <template>
 	<header class="container text-center">
-		<h1 class="pb-5">
+		<h1 class="mb-5">
 			<logo />
 		</h1>
 		<h2 class="subtitle h5 text-black-50 font-weight-normal">
