@@ -22,6 +22,11 @@ export default defineComponent({
 	setup() {
 		const sites = [
 			{
+				author: "かぢゃぽんのお部屋",
+				title: "PS2PAR解析部屋",
+				url: "http://www5.airnet.ne.jp/kajapon/"
+			},
+			{
 				author: "zero memory",
 				title: "PS2PARコード変換スクリプト",
 				url: "http://www.big.or.jp/~dram/ps2code.html"
