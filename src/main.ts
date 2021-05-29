@@ -24,7 +24,7 @@ app.use(VueToastification, {
 		}
 	},
 	transition: "Vue-Toastification__slideBlurred",
-	maxToasts: 2,
+	maxToasts: 3,
 	newestOnTop: true
 })
 
