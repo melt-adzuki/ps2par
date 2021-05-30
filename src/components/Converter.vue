@@ -9,10 +9,10 @@
 				/>
 			</div>
 			<div class="col-xl-2 col-12 d-flex flex-column justify-content-center">
-				<conv-button @click="decode" icon="fa-arrow-right" color="blue">
+				<conv-button @click="decode" icon="arrow-right" color="blue">
 					複合化
 				</conv-button>
-				<conv-button @click="encode" icon="fa-arrow-left" color="red">
+				<conv-button @click="encode" icon="arrow-left" color="red">
 					暗号化
 				</conv-button>
 			</div>
@@ -24,21 +24,17 @@
 				/>
 			</div>
 			<div class="col-xl-2 col-12 d-flex flex-column justify-content-center">
-				<conv-button
-					@click="convertToPnach"
-					icon="fa-arrow-right"
-					color="green"
-				>
+				<conv-button @click="convertToPnach" icon="arrow-right" color="green">
 					変換
 				</conv-button>
 				<conv-button
 					@click="deconvertFromPnach"
-					icon="fa-arrow-left"
+					icon="arrow-left"
 					color="green"
 				>
 					逆変換
 				</conv-button>
-				<conv-button @click="copyPnach" icon="fa-paperclip">
+				<conv-button @click="copyPnach" icon="copy">
 					pnachをコピー
 				</conv-button>
 			</div>
