@@ -36,8 +36,7 @@ export default defineComponent({
 	border-radius: 0px;
 	background-color: #ffffff;
 	color: var(--main-color);
-	border: none;
-	border-bottom: 8px solid var(--main-color);
+	border-radius: 8px;
 
 	&:hover {
 		background-color: var(--main-color);

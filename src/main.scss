@@ -15,16 +15,16 @@ $headings-line-height: 2;
 	--main-strong-shadow-color: rgba(0, 168, 255, 0.7);
 }
 
-.green {
-	--main-color: rgb(126, 216, 22);
-	--main-shadow-color: rgba(126, 216, 22, 0.2);
-	--main-strong-shadow-color: rgba(126, 216, 22, 0.7);
-}
-
 .red {
 	--main-color: rgb(222, 84, 84);
 	--main-shadow-color: rgba(222, 84, 84, 0.2);
 	--main-strong-shadow-color: rgba(222, 84, 84, 0.7);
+}
+
+.green {
+	--main-color: rgb(126, 216, 22);
+	--main-shadow-color: rgba(126, 216, 22, 0.3);
+	--main-strong-shadow-color: rgba(126, 216, 22, 0.7);
 }
 
 .has-shadow {
