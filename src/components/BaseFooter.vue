@@ -12,15 +12,10 @@ import { defineComponent, ref } from "vue"
 
 export default defineComponent({
 	setup() {
-		const currentYear = ref(0)
+		const date = new Date()
+		const currentYear = date.getFullYear()
 
-		return {
-			currentYear
-		}
-	},
-	created() {
-		const dateObject = new Date()
-		this.currentYear = dateObject.getFullYear()
+		return { currentYear }
 	}
 })
 </script>
