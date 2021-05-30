@@ -2,7 +2,7 @@
 	<div class="container">
 		<h2>謝辞</h2>
 		<div v-for="site in sites" :key="site.id">
-			<h4>{{ site.title }}</h4>
+			<h3 class="h4">{{ site.title }}</h3>
 			<p v-if="site.description">{{ site.description }}</p>
 			<ul>
 				<li v-for="data in site.data" :key="data.id">

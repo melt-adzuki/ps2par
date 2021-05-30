@@ -1,14 +1,14 @@
 <template>
-	<base-header class="py-5" />
-	<main>
+	<base-header role="banner" class="py-5" />
+	<main role="main">
 		<article class="has-background-image px-5 py-5">
 			<converter />
 		</article>
-		<aside class="py-5">
+		<aside role="complementary" class="py-5">
 			<acknowledgements />
 		</aside>
 	</main>
-	<base-footer />
+	<base-footer role="contentinfo" />
 </template>
 
 <script lang="ts">
