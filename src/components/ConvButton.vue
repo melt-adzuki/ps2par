@@ -5,7 +5,7 @@
 		"
 	>
 		<component :is="icon" class="conv-icon"></component>
-		<span class="ml-4"><slot></slot></span>
+		<span><slot></slot></span>
 	</button>
 </template>
 
