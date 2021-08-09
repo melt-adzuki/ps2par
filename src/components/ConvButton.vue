@@ -33,7 +33,6 @@ export default defineComponent({
 .conv-button {
 	text-align: right;
 	padding: 12px 16px;
-	border-radius: 0px;
 	background-color: #ffffff;
 	color: var(--main-color);
 	border-radius: 8px;
