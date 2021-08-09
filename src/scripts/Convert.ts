@@ -1,14 +1,11 @@
 class Code {
-	match: RegExp
-	func: Function
-	commentOrder: number
 	result: string = ""
 
-	constructor(match: RegExp, func: Function, commentOrder: number = 3) {
-		this.match = match
-		this.func = func
-		this.commentOrder = commentOrder
-	}
+	constructor(
+		private _match: RegExp,
+		private _func: Function,
+		private _commentOrder: number = 3
+	) {}
 
 	do(input: string): string {
 		this.result = ""
@@ -20,13 +17,13 @@ class Code {
 			// 空白行ではない場合
 			if (!(line === "")) {
 				// 正しいコードである場合
-				if (line.match(this.match)) {
+				if (line.match(this._match)) {
 					// 処理を実行する
-					this.func()
+					this._func()
 
 					let comment: string = ""
 
-					switch (this.commentOrder) {
+					switch (this._commentOrder) {
 						case 3:
 							comment = RegExp.$3
 							break
