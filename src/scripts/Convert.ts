@@ -128,11 +128,7 @@ const toPnach = new Code(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, () => {
 			)}`
 			break
 		case "2":
-			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-			break
 		case "A":
-			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
-			break
 		case "F":
 			toPnach.result += `${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`
 			break
