@@ -3,7 +3,7 @@
 
 
 ## What is this
-This is a converter which can encode/decode PS2PAR code or convert/deconvert to pnach code used in PCSX2.
+This is a converter which can encode/decode PS2PAR code or convert/deconvert pnach code used in PCSX2.
 
 ## How to build
 ```
