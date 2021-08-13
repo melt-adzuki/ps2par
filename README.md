@@ -1,6 +1,11 @@
-# ps2par
+# PS2PAR
+![Screenshot](./.img/screenshot.png)
 
-## Project setup
+
+## What is this
+This is a converter which can encode/decode PS2PAR code or convert/deconvert to pnach code used in PCSX2.
+
+## How to build
 ```
 yarn install
 ```
