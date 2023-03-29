@@ -49,50 +49,42 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
+<script lang="ts" setup>
+import { ref } from "vue"
+import Converter from "../scripts/Converter"
 import { useToast } from "vue-toastification"
 import ConvInput from "./ConvInput.vue"
 import ConvButton from "./ConvButton.vue"
-import { Convert } from "../scripts/Convert"
 
 const toast = useToast()
 
-export default defineComponent({
-	name: "Converter",
-	components: {
-		ConvInput,
-		ConvButton
-	},
-	data() {
-		return {
-			encoded: "",
-			decoded: "",
-			pnach: ""
-		}
-	},
-	methods: {
-		decode() {
-			this.decoded = Convert.decode(this.encoded)
-			this.convertToPnach()
-			toast.success("複合化しました。")
-		},
-		encode() {
-			this.encoded = Convert.encode(this.decoded)
-			toast.success("暗号化しました。")
-		},
-		convertToPnach() {
-			this.pnach = Convert.toPnach(this.decoded)
-			toast.success("pnachコードに変換しました。")
-		},
-		deconvertFromPnach() {
-			this.decoded = Convert.fromPnach(this.pnach)
-			toast.success("pnachコードから復元しました。")
-		},
-		copyPnach() {
-			navigator.clipboard.writeText(this.pnach)
-			toast.success("pnachコードをコピーしました。")
-		}
-	}
-})
+const encoded = ref("")
+const decoded = ref("")
+const pnach = ref("")
+
+function decode() {
+	decoded.value = Converter.decode(encoded.value)
+	convertToPnach()
+	toast.success("複合化しました。")
+}
+
+function encode() {
+	encoded.value = Converter.encode(decoded.value)
+	toast.success("暗号化しました。")
+}
+
+function convertToPnach() {
+	pnach.value = Converter.toPnach(decoded.value)
+	toast.success("pnachコードに変換しました。")
+}
+
+function deconvertFromPnach() {
+	decoded.value = Converter.fromPnach(pnach.value)
+	toast.success("pnachコードから復元しました。")
+}
+
+function copyPnach() {
+	navigator.clipboard.writeText(pnach.value)
+	toast.success("pnachコードをコピーしました。")
+}
 </script>
