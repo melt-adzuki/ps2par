@@ -3,7 +3,7 @@
 		<div class="row row-align-items-start">
 			<div class="col">
 				<conv-input
-					name="暗号化"
+					name="PAR暗号コード"
 					placeholder="3C978328 1456E7A5"
 					v-model="encoded"
 				/>
@@ -18,7 +18,7 @@
 			</div>
 			<div class="col">
 				<conv-input
-					name="複合化"
+					name="複合コード"
 					placeholder="00000000 00000000"
 					v-model="decoded"
 				/>
