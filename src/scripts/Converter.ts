@@ -1,59 +1,55 @@
 const Converter = {
-	decode: generateConverter(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, add => {
-		add(`${parConverter(RegExp.$1, "address", "decode")} ${parConverter(
-			RegExp.$2,
-			"data",
-			"decode"
-		)}`.toUpperCase())
+	decode: generateConverter(/^(?<address>[0-9A-F]{8})[\s　]*?(?<value>[0-9A-F]{8})(?<rest>.*)$/i, (matched, add) => {
+		const address = parConverter(matched.address, "address", "decode")
+		const value = parConverter(matched.value, "value", "decode")
+
+		add(`${address} ${value}`)
 	}),
 
-	encode: generateConverter(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, add => {
-		add(`${parConverter(RegExp.$1, "address", "encode")} ${parConverter(
-			RegExp.$2,
-			"data",
-			"encode"
-		)}`.toUpperCase())
+	encode: generateConverter(/^(?<address>[0-9A-F]{8})[\s　]*?(?<value>[0-9A-F]{8})(?<rest>.*)$/i, (matched, add) => {
+		const address = parConverter(matched.address, "address", "encode")
+		const value = parConverter(matched.value, "value", "encode")
+
+		add(`${address} ${value}`)
 	}),
 
-	toPnach: generateConverter(/^([0-9A-F]{8})[\s　]*?([0-9A-F]{8})(.*)$/i, add => {
+	toPnach: generateConverter(/^(?<address>[0-9A-F]{8})[\s　]*?(?<value>[0-9A-F]{8})(?<rest>.*)$/i, (matched, add) => {
 		add("patch=1,EE,")
 
-		switch (RegExp.$1.charAt(0)) {
+		switch (matched.address.charAt(0)) {
 			case "0":
-				add(`${RegExp.$1},byte,${RegExp.$2.substring(6, 8)}`)
+				add(`${matched.address},byte,${matched.value.substring(6, 8)}`)
 				break
 			case "1":
-				add(`${RegExp.$1.substring(1)},short,${RegExp.$2.substring(4,8)}`)
+				add(`${matched.address.substring(1)},short,${matched.value.substring(4,8)}`)
 				break
 			case "2":
 			case "A":
 			case "F":
-				add(`${RegExp.$1.substring(1, 8)},word,${RegExp.$2}`)
+				add(`${matched.address.substring(1, 8)},word,${matched.value}`)
 				break
 			default:
-				add(`${RegExp.$1},extended,${RegExp.$2}`)
+				add(`${matched.address},extended,${matched.value}`)
 				break
 		}
 	}),
 
 	fromPnach: generateConverter(
-		/^(\bpatch=[01],EE,\b)([0-9A-F]{1,8}),(\bbyte|short|word|extended\b),([0-9A-F]{1,8})(.*)$/i,
-		add => {
-			const address = RegExp.$2.padStart(8, "0")
-			const value = RegExp.$4.padStart(8, "0")
+		/^(\bpatch=[01],EE,\b)(?<address>[0-9A-F]{1,8}),(\bbyte|short|word|extended\b),(?<value>[0-9A-F]{1,8})(?<rest>.*)$/i,
+		(matched, add) => {
+			const address = matched.address.padStart(8, "0")
+			const value = matched.value.padStart(8, "0")
 			
 			add(`${address} ${value}`)
 		},
-		5
 	),
 }
 
 export default Converter
 
 function generateConverter(
-	match: RegExp,
-	generator: (add: (code: string) => void) => void,
-	commentOrder: number = 3
+	matcher: RegExp,
+	generator: (matched: Record<string, string>, add: (code: string) => void) => void,
 ) {
 	return function execute(input: string): string {
 		let result = ""
@@ -63,15 +59,17 @@ function generateConverter(
 			line = line.trim()
 
 			// 空白行ではない場合
-			if (!(line === "")) {
+			if (line !== "") {
+				const matchArray = line.match(matcher)
+				
 				// 正しいコードである場合
-				if (line.match(match)) {
+				if (matchArray !== null) {
 					// 処理を実行する
-					generator(code => {
+					generator(matchArray.groups!, code => {
 						result += code
 					})
 
-					const comment: string = Reflect.get(RegExp, `$${commentOrder}`)
+					const comment = matchArray.groups!.rest
 
 					// コードの後にコメントがある場合
 					if (!(comment === "")) {
@@ -80,15 +78,15 @@ function generateConverter(
 							// そのまま出力
 							result += comment
 						} else {
-							comment.match(/(\s*)([^\s].*)$/)
-							result += `${RegExp.$1} //${RegExp.$2}`
+							const matchArray = comment.match(/(\s*)([^\s].*)$/)
+							result += `${matchArray![1]} // ${matchArray![2]}`
 						}
 					}
 
 					// コードではない場合
 				} else {
 					// すでにコメントアウトしていなければ行う
-					if (!line.match(/^\s*\/\/.*$/)) result += " //"
+					if (!line.match(/^\s*\/\/.*$/)) result += "// "
 					result += line
 				}
 			}
@@ -103,7 +101,7 @@ function generateConverter(
 
 function parConverter(
 	input: string,
-	part: "address" | "data",
+	part: "address" | "value",
 	mode: "encode" | "decode"
 ): string {
 	const bxor =
@@ -133,5 +131,5 @@ function parConverter(
 		result += b2.toString(16)
 	}
 
-	return result
+	return result.toUpperCase()
 }
