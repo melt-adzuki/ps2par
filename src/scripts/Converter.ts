@@ -106,8 +106,6 @@ function parConverter(
 	part: "address" | "data",
 	mode: "encode" | "decode"
 ): string {
-	console.log(input, part, mode)
-	
 	const bxor =
 		part === "address" ? [0xa6, 0x96, 0x01, 0x82] : [0xd9, 0x3b, 0x1b, 0xcc]
 	let result: string = ""
@@ -135,6 +133,5 @@ function parConverter(
 		result += b2.toString(16)
 	}
 
-	console.log("result", result)
 	return result
 }
