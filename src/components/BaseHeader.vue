@@ -9,15 +9,8 @@
 	</header>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
+<script lang="ts" setup>
 import Logo from "./Logo.vue"
-
-export default defineComponent({
-	components: {
-		Logo
-	}
-})
 </script>
 
 <style lang="scss" scoped>

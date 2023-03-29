@@ -26,11 +26,3 @@
 	max-width: 480px;
 }
 </style>
-
-<script lang="ts">
-import { defineComponent } from "vue"
-
-export default defineComponent({
-	name: "Logo"
-})
-</script>

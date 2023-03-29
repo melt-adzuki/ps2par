@@ -11,22 +11,11 @@
 	<base-footer role="contentinfo" />
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
+<script lang="ts" setup>
 import BaseHeader from "./components/BaseHeader.vue"
 import Converter from "./components/Converter.vue"
 import Acknowledgements from "./components/Acknowledgements.vue"
 import BaseFooter from "./components/BaseFooter.vue"
-
-export default defineComponent({
-	name: "App",
-	components: {
-		BaseHeader,
-		Converter,
-		Acknowledgements,
-		BaseFooter
-	}
-})
 </script>
 
 <style lang="scss" scoped>

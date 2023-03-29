@@ -3,7 +3,7 @@
 		<div class="row row-align-items-start">
 			<div class="col">
 				<conv-input
-					name="PAR暗号コード"
+					title="PAR暗号コード"
 					placeholder="3C978328 1456E7A5"
 					v-model="encoded"
 				/>
@@ -18,7 +18,7 @@
 			</div>
 			<div class="col">
 				<conv-input
-					name="複合コード"
+					title="複合コード"
 					placeholder="00000000 00000000"
 					v-model="decoded"
 				/>
@@ -40,7 +40,7 @@
 			</div>
 			<div class="col">
 				<conv-input
-					name="pnach"
+					title="pnach"
 					placeholder="patch=1,EE,00000000,byte,00"
 					v-model="pnach"
 				/>
@@ -51,8 +51,8 @@
 
 <script lang="ts" setup>
 import { ref } from "vue"
-import Converter from "../scripts/Converter"
 import { useToast } from "vue-toastification"
+import Converter from "../scripts/Converter"
 import ConvInput from "./ConvInput.vue"
 import ConvButton from "./ConvButton.vue"
 

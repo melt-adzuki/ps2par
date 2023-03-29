@@ -4,29 +4,24 @@
 			`conv-button btn has-shadow w-100 d-flex justify-content-between align-items-center my-3 ${color}`
 		"
 	>
-		<component :is="icon" class="conv-icon"></component>
-		<span><slot></slot></span>
+		<arrow-left v-if="icon === 'arrow-left'" class="conv-icon" />
+		<arrow-right v-else-if="icon === 'arrow-right'" class="conv-icon" />
+		<copy v-else-if="icon === 'copy'" class="conv-icon" />
+		
+		<span><slot /></span>
 	</button>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
+<script lang="ts" setup>
+import { defineProps } from "vue"
 import ArrowLeft from "./icons/ArrowLeft.vue"
 import ArrowRight from "./icons/ArrowRight.vue"
 import Copy from "./icons/Copy.vue"
 
-export default defineComponent({
-	name: "ConvButton",
-	components: {
-		ArrowLeft,
-		ArrowRight,
-		Copy
-	},
-	props: {
-		icon: String,
-		color: String
-	}
-})
+defineProps<{
+	icon: "arrow-left" | "arrow-right" | "copy"
+	color?: string
+}>()
 </script>
 
 <style lang="scss" scoped>

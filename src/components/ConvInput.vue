@@ -1,24 +1,22 @@
 <template>
-	<h3>{{ name }}</h3>
+	<h3>{{ title }}</h3>
 	<textarea
 		class="conv-input has-shadow w-100"
 		:placeholder="placeholder"
-		rows="20"
+		:rows="20"
 		:value="modelValue"
 		@input="$emit('update:modelValue', $event.target.value)"
 	></textarea>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue"
+<script lang="ts" setup>
+import { defineProps } from "vue"
 
-export default defineComponent({
-	props: {
-		name: String,
-		placeholder: String,
-		modelValue: String
-	}
-})
+defineProps<{
+	title: string
+	placeholder: string
+	modelValue: string
+}>()
 </script>
 
 <style lang="scss" scoped>
