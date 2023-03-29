@@ -27,5 +27,6 @@
 		"> 1%",
 		"last 2 versions",
 		"not dead"
-	]
+	],
+	"packageManager": "yarn@1.22.19"
 }
